@@ -9,18 +9,22 @@
 #include <iostream>
 #include <string>
 #include <cctype>
-#include <bits/stdc++.h>
 
 using namespace std;
 int main()
 {
     string input, output = "";
+    // Take input
     getline(cin, input);
+    // Pushing first letter to output in Uppercase
     output.push_back(toupper(input[0]));
     for (int i = 1; i < input.size(); i++)
     {
         if (input[i] == ' ' or input[i] == '\n')
         {
+            // Add a space if you found a breakline or space character
+            // then loop and skip any spaces and
+            // breaklines until you find a letter.
             output += " ";
             while (true)
             {
@@ -32,8 +36,11 @@ int main()
         }
         else
         {
+            // If the current ith char isn't " " nor "\n"
+            // then add it to output in lowercase.
             output += tolower(input[i]);
         }
     }
-    cout << "Result:\n" << output << endl;
+    cout << "Result:\n"
+         << output << endl;
 }
