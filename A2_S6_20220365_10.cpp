@@ -1,3 +1,10 @@
+// File: A2_S6_20220365_10.cpp
+// Purpose: Answer question 10 in Assignment 2
+// Author: Nour Eldeen Mohamed
+// Section: S6
+// ID: 20220365
+// TA: Eng. Maya / Eng. Nardeen
+// Date: 29 Oct 2023
 #include <iostream>
 #include <string>
 #include <fstream>
