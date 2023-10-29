@@ -1,3 +1,12 @@
+// File: A2_S6_20220365_2.cpp
+// Purpose: Answer question 2 in Assignment 2
+// Author: Sara Mohamed Zaghloul
+// Section: S5
+// ID: 20221070
+// TA: Eng. Maya
+// Date: 28 Oct 2023
+
+
 #include<bits/stdc++.h>
 #include<fstream>
 using namespace std;
