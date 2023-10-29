@@ -5,6 +5,9 @@
 // ID: 20220365
 // TA: Eng. Maya / Eng. Nardeen
 // Date: 29 Oct 2023
+
+// Please make sure you downloaded words.h before
+// attempting to run the code.
 #include <iostream>
 #include <string>
 #include <fstream>
