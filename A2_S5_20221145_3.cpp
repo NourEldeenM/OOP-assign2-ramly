@@ -1,3 +1,12 @@
+// File: A2_S5_20221145_3.cpp
+// Purpose: quesion 3 assignment 2 
+// Author: Maryam Omar Ahmed
+// Section: S5
+// ID: 20221145
+// TA: ENG/ Maya
+// Date: 27 Oct 2023
+
+
 #include <bits/stdc++.h>
 #include <iostream>
 #include <vector>
