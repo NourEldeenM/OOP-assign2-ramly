@@ -1,4 +1,4 @@
-// File: A2_S5_20221145_3.cpp
+// File: A2_S5_20221145_6.cpp
 // Purpose: quesion 6 assignment 2 
 // Author: Maryam Omar Ahmed
 // Section: S5
