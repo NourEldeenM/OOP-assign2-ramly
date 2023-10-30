@@ -1,5 +1,17 @@
+// File: A2_S6_20220365_5.cpp
+// Purpose: Answer question 5 in Assignment 2
+// Author: Sara Mohamed Zaghloul
+// Section: S5
+// ID: 20221070
+// TA: Eng. Maya
+// Date: 30 Oct 2023
+
+
+
 #include<bits/stdc++.h>
+
 using namespace std;
+
 void pattern(int n, int i){
     if (n==0)
       return;
@@ -17,6 +29,8 @@ void pattern(int n, int i){
     // The second recursive funcation
     
 }
+
+
 int main() {
     cout<<"Enter the number of maximum astrisks do you want (your number is a power of 2 greater than zero) : ";
     int r; cin>>r;
