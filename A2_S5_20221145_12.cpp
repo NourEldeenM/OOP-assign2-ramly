@@ -1,3 +1,11 @@
+// File: A2_S5_20221145_3.cpp
+// Purpose: quesion 3 assignment 2 
+// Author: Maryam Omar Ahmed
+// Section: S5
+// ID: 20221145
+// TA: ENG/ Maya
+// Date: 27 Oct 2023
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -20,9 +28,9 @@ map<string,int>wordpoints=//keywords and their points
     ,{"[Name] sent you some files",2} ,
     {"File- ####",1} ,{"[Business Name] Sales Project Files and Request for Quote",3} ,{"File Document ####",1}
      ,{"[Name], You have received a new document in [Company system]",2}
-     ,{"Attn: [Name] ñ You have an important [Business name] designated Document",3} ,{"Document For [business email address]",2}
+     ,{"Attn: [Name] ‚Äì You have an important [Business name] designated Document",3} ,{"Document For [business email address]",2}
      ,{"View Attached Documents",1} ,{"[Name] shared a document with you",1} ,{"Verification Required!",3}
-     ,{"eFaxÆ message from ì[phone number]î ñ 2 page(s), Caller-ID: +[phone number]",3}
+     ,{"eFax¬Æ message from ‚Äú[phone number]‚Äù ‚Äì 2 page(s), Caller-ID: +[phone number]",3}
 
 };
 int total=0; //variable to store the total points in the text;
