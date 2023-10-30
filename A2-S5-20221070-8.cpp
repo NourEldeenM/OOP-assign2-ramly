@@ -1,5 +1,5 @@
-// File: A2_S6_20220365_5.cpp
-// Purpose: Answer question 5 in Assignment 2
+// File: A2_S6_20220365_8.cpp
+// Purpose: Answer question 8 in Assignment 2
 // Author: Sara Mohamed Zaghloul
 // Section: S5
 // ID: 20221070
