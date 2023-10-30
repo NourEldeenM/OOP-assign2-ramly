@@ -1,5 +1,5 @@
 // File: A2_S5_20221145_3.cpp
-// Purpose: quesion 3 assignment 2 
+// Purpose: quesion 6 assignment 2 
 // Author: Maryam Omar Ahmed
 // Section: S5
 // ID: 20221145
