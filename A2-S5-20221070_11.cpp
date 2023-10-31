@@ -88,7 +88,7 @@ int main() {
         File_2.seekg(0);
         string word1 ,word2;
         //loop and compare word by word
-        while (File_1>>word1 || File_2>>word2){
+        while (File_1>>word1 && File_2>>word2){
             // if we have a file that has number of words greater than the other one 
             if (File_1.eof()|| File_2.eof()){
                 if (!File_1.eof()&& File_2.eof()){
