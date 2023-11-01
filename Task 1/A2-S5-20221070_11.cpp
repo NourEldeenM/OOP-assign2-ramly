@@ -33,28 +33,11 @@ int main() {
     string line1,line2;
     int num=1;
     if (target=='a'){
-        // do a loop to check line by line so it will check every character in the two files 
-        while (File_1.good()|| File_2.good()){
+        // do a loop to check line by line so it will check every character in the two files
+        while (File_1.good() && File_2.good()){
             getline(File_1,line1);
             getline(File_2,line2);
-            // A code to check if any file end and the other file still have data 
-            if (File_1.eof()|| File_2.eof()){
-                if (!File_1.eof()&& File_2.eof()){
-                     cout<<" We find a difference as the first file has number of characeters greater than the other one so the files are not identical\n";
-                    cout<<"This defference appear in line number "<< num<< "\n ";
-                    
-                    If_greater=true;
-                    break;
-                }
-                else if (!File_2.eof() && File_1.eof()) {
-                    cout<<" We find a difference as the second file has number of characeters greater than the other one so the files are not identical\n";
-                    cout<<"This defference appear in line number "<< num<< "\n ";
-                    
-                    If_greater=true;
-                    break;
-                }
-            }
-            // if we have a line not equal the other line he will print on the screen the 2 lines and their numbers 
+            // if we have a line not equal the other line he will print on the screen the 2 lines and their numbers
             if (line1!=line2){
                 cout<<"We find a difference at the line  number : ";
                 cout<<num<<endl;
@@ -66,10 +49,14 @@ int main() {
             if (!flag)
                 break;
         }
-        //  A code if the 2 files are identical and their sizes are similar 
-        if (flag && (!If_greater))
-            cout<<"The files are identical\n";
-        File_1.close();
+        //  A code if the 2 files are identical and their sizes are similar
+        if (File_1.eof() && File_2.eof() ){
+            if (flag)
+                cout<<"The files are identical \n";
+        }
+        else
+            cout<<"the length is differ\n";
+       File_1.close();
         File_2.close();
 
     }
@@ -89,22 +76,7 @@ int main() {
         string word1 ,word2;
         //loop and compare word by word
         while (File_1>>word1 && File_2>>word2){
-            // if we have a file that has number of words greater than the other one 
-            if (File_1.eof()|| File_2.eof()){
-                if (!File_1.eof()&& File_2.eof()){
-                    cout<<" We find a difference as the first file  has number of words greater than the other one so the files are not identical\n";
-                    cout<<"This defference appear in line number "<< num<< "\n ";
-                    If_greater=true;
-                    break;
-                }
-                else if (!File_2.eof() && File_1.eof()) {
-                     cout<<" We find a difference as the second file has number of words greater than the other one so the files are not identical\n";
-                    cout<<"This defference appear in line number "<< num<< "\n ";
-                    If_greater=true;
-                    break;
-                }
-            }
-            // if we have two different words he will do this conditions and break from the loop
+            // if we have a file that has number of words greater than the other one
             if (word1!=word2){
                 flag=false;
                 cout<<"We have a difference and files are not identical in this words :\n";
@@ -113,10 +85,15 @@ int main() {
                 break;
 
             }
-            
+
         }
-        if (flag && (!If_greater))
-            cout<<"Files are identical \n";
+        if (flag) {
+            if (File_1.eof() && File_2.eof()) {
+                cout << "The files are identical \n";
+            } else
+                cout << "the length is differ\n";
+        }
+
         File_1.close();
         File_2.close();
 
