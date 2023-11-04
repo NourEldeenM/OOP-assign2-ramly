@@ -3,6 +3,23 @@
 
 using namespace std;
 
+void comparison(){
+    cout<<"Enter the first number : ";
+    string s; cin>>s;
+    BigReal bg(s);
+    BigReal bg2;
+    cout<<"Enter the second number : ";
+    string t; cin>>t;
+    bg2.setNumber(t);
+    if (bg>bg2)
+        cout<<"The first big real number is greater than the second one \n";
+    else if (bg<bg2)
+        cout<<"The first big real number is smaller than the second one \n";
+    else
+        cout<<"Two numbers are equal\n";
+}
+
+
 int main() {
     
     // BigReal b1("0.12345");
