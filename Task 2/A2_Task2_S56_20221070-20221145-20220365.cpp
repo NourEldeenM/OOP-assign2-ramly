@@ -18,6 +18,19 @@ void comparison(){
     else
         cout<<"Two numbers are equal\n";
 }
+void AddBignumbers(){
+    cout<<"Enter the first number : ";
+    string s; cin>>s;
+    BigReal bg(s);
+    BigReal bg2;
+    cout<<"Enter the second number : ";
+    string t; cin>>t;
+    bg2.setNumber(t);
+    BigReal bg3;
+    bg3= bg + bg2;
+    cout<<"The result of the addition is : ";
+    bg3.print();
+}
 
 
 int main() {
