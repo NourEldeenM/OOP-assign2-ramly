@@ -5,35 +5,74 @@
 
 void BigReal::fill(string realnumber)
 {
+    // Assigning the sign variable the sign of the number
     integer = "";
     fraction = "";
-    if (number[0] == '-')
-        {
-            sign = '-';
-            number = number.substr(1);
-        }
-        else if (number[0] == '+')
-        {
-            sign = '+';
-            number = number.substr(1);
-        }
-        else
-            sign = '+';
+    if (realnumber[0] == '-')
+    {
+        sign = '-';
+        realnumber = realnumber.substr(1);
+    }
+    else if (realnumber[0] == '+')
+    {
+        sign = '+';
+        realnumber = realnumber.substr(1);
+    }
+    else
+        sign = '+';
 
-        
-        bool fract = false;
-        for (int i = 0; i < number.size(); i++)
+    // Filling the integer string with the values before the decimal
+    // and fraction string with the values after the decimal
+    bool fract = false;
+    for (int i = 0; i < realnumber.size(); i++)
+    {
+        if (realnumber[i] == '.')
         {
-            if (number[i] == '.')
-            {
-                fract = true;
-                i++;
-            }
-            if (fract)
-                fraction += number[i];
-            else
-                integer += number[i];
+            fract = true;
+            i++;
         }
+        if (fract)
+            fraction += realnumber[i];
+        else
+            integer += realnumber[i];
+    }
+
+    // Removing extra zeros at the LHS of the string integer
+    // as they are not important.
+    int zeros = 0;
+    for (int i = 0; i < integer.size(); i++)
+    {
+        if (integer[i] != '0')
+            break;
+        else
+            zeros++;
+    }
+    integer.erase(0, zeros);
+    // If the string integer is empty, add 0 to it.
+    // ex: (.234 = 0.234)
+    if (integer.size() == 0)
+        integer += '0';
+
+    // Removing extra zeros at the RHS of the string integer
+    // as they are not important
+    zeros = 0;
+    for (int i = fraction.size() - 1; i >= 0; i--)
+    {
+        if (fraction[i] != '0')
+            break;
+        else
+            zeros++;
+    }
+    reverse(fraction.begin(), fraction.end());
+    fraction.erase(0, zeros);
+    reverse(fraction.begin(), fraction.end());
+    // If the string fraction is empty, add 0 to it.
+    // ex: (123. = 123.0)
+    if (fraction.size() == 0)
+        fraction += '0';
+
+    // Update the main number.
+    number = realnumber;
 }
 
 bool BigReal::isValidReal(string realnumber)
@@ -62,10 +101,9 @@ BigReal::BigReal()
 
 BigReal::BigReal(string realnumber)
 {
-    number = realnumber;
-    if (isValidReal(number))
+    if (isValidReal(realnumber))
     {
-        fill(number);
+        fill(realnumber);
     }
 }
 
@@ -73,7 +111,6 @@ void BigReal::print()
 {
     if (isValidReal(number))
         cout << sign << integer << "." << fraction << endl;
-    
 }
 
 int BigReal::getSize()
@@ -81,11 +118,13 @@ int BigReal::getSize()
     if (isValidReal(number))
     {
         int counter = 0;
-        for (int i = 0; i < number.size(); i++)
-        {
-            if (isdigit(number[i]))
-                counter++;
-        }
+        for (int i = 0; i < integer.size(); i++)
+            counter++;
+
+        for (int i = 0; i < fraction.size(); i++)
+            counter++;
+
+        counter -= 2;
         return counter;
     }
     return (0);

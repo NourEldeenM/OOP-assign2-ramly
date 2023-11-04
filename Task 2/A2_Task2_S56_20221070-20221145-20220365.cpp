@@ -16,10 +16,13 @@ int main() {
     // BigReal b5("1...3+2-5");
     // b5.print();
 
-    // BigReal b6;
-    // b6.setNumber("98765");
-    // cout << "B6 has sign: " << b6.getSign() << endl;
-    // cout << "B6 has " << b6.getSize() << " digits" << endl;
-    // b6.print();
+    BigReal b6;
+    b6.setNumber("-0000007000000.987650000000000");
+    cout << "B6 has sign: " << b6.getSign() << endl;
+    cout << "B6 has " << b6.getSize() << " digits" << endl;
+    b6.print();
+    b6.setNumber("-000.6789000");
+    b6.print();
+    
     
 }
