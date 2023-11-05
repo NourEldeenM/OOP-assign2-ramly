@@ -1,3 +1,10 @@
+// File: A2_Task2_S56_20221070-20221145-20220365.cpp
+// Purpose: main file for Assignment2 Task2
+// Author: Sara Mohamed Zaghloul / Maryam Omar / Nour Eldeen Mohamed
+// Section: S5/6
+// ID: 20221070 - 20220365 - 20221145
+// TA: Eng. Maya / Eng. Nardeen
+// Date: 23 Oct 2023
 #include "bigreal.cpp"
 #include <bits/stdc++.h>
 
@@ -29,8 +36,8 @@ int main()
     // b6.setNumber("-000.6789000");
     // b6.print();
 
-    BigReal b1("123.1");
-    BigReal b2("111.9");
+    // BigReal b1("123.1");
+    // BigReal b2("111.9");
     // BigReal b3;
     // b3 = b1 + b2;
     // b3.print();
@@ -39,8 +46,11 @@ int main()
     // else
     //     cout << "No\n";
 
-    BigReal b4 = b2;
-    cout << b4 << endl;
+    // BigReal b4 = b2;
+    // cout << b4 << endl;
+
+    // comparison();
+    // AddBignumbers();
 }
 
 

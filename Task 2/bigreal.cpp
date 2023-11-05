@@ -1,7 +1,14 @@
+// Implementation file for bigReal Class
+// File: bigreal.cpp
+// Purpose: Implementation file for Assignment2 Task2
+// Author: Sara Mohamed Zaghloul / Maryam Omar / Nour Eldeen Mohamed
+// Section: S5/6
+// ID: 20221070 - 20220365 - 20221145
+// TA: Eng. Maya / Eng. Nardeen
+// Date: 23 Oct 2023
+
 #include "bigreal.h"
 #include <bits/stdc++.h>
-
-// Implementation file for bigReal Class
 
 void BigReal::fill(string realnumber)
 {

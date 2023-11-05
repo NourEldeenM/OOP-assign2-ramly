@@ -1,4 +1,11 @@
 // Header file for bigReal Class
+// File: bigreal.h
+// Purpose: Header file for Assignment2 Task2
+// Author: Sara Mohamed Zaghloul / Maryam Omar / Nour Eldeen Mohamed
+// Section: S5/6
+// ID: 20221070 - 20220365 - 20221145
+// TA: Eng. Maya / Eng. Nardeen
+// Date: 23 Oct 2023
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
