@@ -13,7 +13,7 @@ using namespace std;
 class BigReal
 {
 private:
-    string number, integer, fraction;
+    string number = "", integer, fraction;
     char sign;
 
     void fill(string realnumber);

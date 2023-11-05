@@ -95,6 +95,13 @@ bool BigReal::isValidReal(string realnumber)
     if (x > 1 or y > 1)
         return false;
 
+    for (int i = 0; i < realnumber.size(); i++)
+    {
+        if (isalpha(realnumber[i]))
+            return false;
+            
+    }
+
     return true;
 }
 
@@ -140,7 +147,7 @@ BigReal &BigReal::operator=(BigReal const &other)
 
 void BigReal::print()
 {
-    if (isValidReal(number))
+    if (isValidReal(number) and number.size() != 0)
         cout << sign << integer << "." << fraction << endl;
 }
 
