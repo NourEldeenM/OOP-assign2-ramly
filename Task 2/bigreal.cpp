@@ -162,7 +162,6 @@ int BigReal::getSize()
         for (int i = 0; i < fraction.size(); i++)
             counter++;
 
-        counter -= 2;
         return counter;
     }
     return (0);
