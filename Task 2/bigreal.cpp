@@ -287,7 +287,12 @@ BigReal BigReal::operator+(BigReal bg2)
         return BigReal(res);
             }
     else if (bg2.integer="0" && bg2.fraction=="0"){
+        if (sign=='+')
         res=integer+'.'+fraction;
+        else
+            res='-'+integer+'.'+fraction;
+            
+            
         return BigReal(res);
     }
 
