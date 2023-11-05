@@ -280,11 +280,14 @@ BigReal BigReal::operator+(BigReal bg2)
     if (sign == '-' && bg2.sign == '-')
         cnt = 1;
     if (integer=="0" && fraction=="0"){
+        if (bg2.sign=='+')
         res=bg2.integer+'.'+bg2.fraction;
+        else 
+            res='-'+bg2.integer+'.'+bg2.fraction;
         return BigReal(res);
             }
     else if (bg2.integer="0" && bg2.fraction=="0"){
-        res=integer+'.'+fracion;
+        res=integer+'.'+fraction;
         return BigReal(res);
     }
 
