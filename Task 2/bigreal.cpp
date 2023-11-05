@@ -348,7 +348,7 @@ BigReal BigReal::operator -(BigReal bg2){
     if (sign=='-'&&bg2.sign=='-'){
         cnt=1;
     }
-    if (sign=='-' &&(bg2.fraction==0 && bg2.integer==0)){
+    if (sign=='-' &&(bg2.fraction=="0" && bg2.integer=="0")){
         res='-'+integer+'.'+fraction;
         return BigReal(res);
     }
