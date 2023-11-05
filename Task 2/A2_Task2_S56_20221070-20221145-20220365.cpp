@@ -17,40 +17,42 @@ void AddBignumbers();
 
 int main()
 {
-    BigReal b1("0.12345");
-    b1.print();
-    BigReal b2("-12345.678");
-    b2.print();
-    BigReal b3(".1234");
-    b3.print();
-    BigReal b4("+-1234");
-    b4.print();
-    BigReal b5("1...3+2-5");
-    b5.print();
 
-    // BigReal b6;
-    // b6.setNumber("-0000007000000.987650000000000");
-    // cout << "B6 has sign: " << b6.getSign() << endl;
-    // cout << "B6 has " << b6.getSize() << " digits" << endl;
-    // b6.print();
-    // b6.setNumber("-000.6789000");
-    // b6.print();
+    // Test 1: default constructor & print
+    // BigReal b1;
+    // b1.print();
 
-    // BigReal b1("123.1");
-    // BigReal b2("111.9");
-    // BigReal b3;
-    // b3 = b1 + b2;
+    // Test 2: parameterized constructor
+    // BigReal b2("123.456");
+    // b2.print();
+
+    // Test 3: copy constructor & assignment operator
+    // BigReal temp("13.98");
+    // BigReal b3(temp);
     // b3.print();
-    // if (b1 == b2)
-    //     cout << "Yes\n";
-    // else
-    //     cout << "No\n";
+    // BigReal x = b3;
+    // x.print();
 
-    // BigReal b4 = b2;
-    // cout << b4 << endl;
+    // Test 4: Functions (getSize/getSign/setNumber)
+    // BigReal b4;
+    // b4.setNumber("-111157.83722");
+    // cout << "Sign of b4 = " << b4.getSign() << endl;
+    // cout << "Size of b4 = " << b4.getSize() << endl;
 
-    // comparison();
-    // AddBignumbers();
+    // Test 5: Operator (> / < / ==)
+    // BigReal b5("123"), b6("999"), b7("123");
+    // if (b5 < b6)
+    //     cout << "Yes1" << endl;
+    // if (b6 > b7)
+    //     cout << "Yes2" << endl;
+    // if (b5 == b7)
+    //     cout << "Yes3" << endl;
+
+    // Test 6: Operator (+ / - / <<)
+    // BigReal b8("111"), b9("888");
+    // cout << b8 + b9 << endl;
+    // cout << b8 - b9 << endl;
+
 }
 
 
