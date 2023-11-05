@@ -279,6 +279,14 @@ BigReal BigReal::operator+(BigReal bg2)
     int cnt = 0;
     if (sign == '-' && bg2.sign == '-')
         cnt = 1;
+    if (integer=="0" && fraction=="0"){
+        res=bg2.integer+'.'+bg2.fraction;
+        return BigReal(res);
+            }
+    else if (bg2.=="0" && bg2.fraction=="0"){
+        res=integer+'.'+fracion;
+        return BigReal(res);
+    }
 
     if (fraction.size() > bg2.fraction.size())
         bg2.fraction += string(fraction.size() - bg2.fraction.size(), '0');
@@ -291,7 +299,7 @@ BigReal BigReal::operator+(BigReal bg2)
 
     int carry = 0;
     string res2 = "";
-    for (int i = fraction.size() - 1; i >= 0; --i)
+    for (long long i = fraction.size() - 1; i >= 0; --i)
     {
         int digit1 = fraction[i] - '0';
         int digit2 = bg2.fraction[i] - '0';
@@ -304,7 +312,7 @@ BigReal BigReal::operator+(BigReal bg2)
     res2 = '.' + res2;
 
     string res1 = "";
-    for (int i = integer.size() - 1; i >= 0; --i)
+    for (long long i = integer.size() - 1; i >= 0; --i)
     {
         int digit1 = integer[i] - '0';
         int digit2 = bg2.integer[i] - '0';
@@ -340,7 +348,11 @@ BigReal BigReal::operator -(BigReal bg2){
     if (sign=='-'&&bg2.sign=='-'){
         cnt=1;
     }
-    if (fraction.size()>bg2.fraction.size()){
+    if (sign=='-' &&(bg2.fraction==0 && bg2.integer==0){
+        res='-'+integer+'.'+fraction;
+        return BigReal(res);
+    }
+        if (fraction.size()>bg2.fraction.size()){
         bg2.fraction+=string(fraction.size()-bg2.fraction.size(),'0');
     }
     else if (fraction.size()<bg2.fraction.size())
@@ -367,7 +379,7 @@ BigReal BigReal::operator -(BigReal bg2){
         if (cnt==1){
             res='-'+res;
         }
-        for (int i=fraction.size()-1;i>=0;--i){
+        for (long long i=fraction.size()-1;i>=0;--i){
             int digit1= fraction[i]-'0';
             int digit2=bg2.fraction[i]-'0';
             int diff=digit1-digit2-borrow;
@@ -380,7 +392,7 @@ BigReal BigReal::operator -(BigReal bg2){
             res2+= to_string(diff);
 
         }
-       for (int i=integer.size()-1;i>=0;--i){
+       for (long long i=integer.size()-1;i>=0;--i){
            int digit1= integer[i]-'0';
            int digit2=bg2.integer[i]-'0';
            int diff=digit1-digit2-borrow;
@@ -399,7 +411,7 @@ BigReal BigReal::operator -(BigReal bg2){
         if (cnt==0){
             res='-'+res;
         }
-        for (int i=fraction.size()-1;i>=0;--i){
+        for (long long i=fraction.size()-1;i>=0;--i){
             int digit1= fraction[i]-'0';
             int digit2=bg2.fraction[i]-'0';
             int diff=digit1-digit2-borrow;
@@ -412,7 +424,7 @@ BigReal BigReal::operator -(BigReal bg2){
             res2+= to_string(diff);
 
         }
-        for (int i=integer.size()-1;i>=0;--i){
+        for (long long i=integer.size()-1;i>=0;--i){
             int digit1= integer[i]-'0';
             int digit2=bg2.integer[i]-'0';
             int diff=digit1-digit2-borrow;
