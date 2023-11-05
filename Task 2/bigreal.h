@@ -35,7 +35,7 @@ public:
     bool operator>(BigReal bg1); // Overloading operator >
     bool operator<(BigReal bg1); // Overloading operator <
     bool operator==(BigReal bg1); // Overloading operator ==
-    BigReal operator+(BigReal bg2); // Overloading operator 
+    BigReal operator+(BigReal bg2); // Overloading operator +
     BigReal operator-(BigReal bg2); // Overloading operator -
 
     friend ostream& operator << (ostream& out, BigReal num); // Overloading operator <<
