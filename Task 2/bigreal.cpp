@@ -286,7 +286,7 @@ BigReal BigReal::operator+(BigReal bg2)
             res='-'+bg2.integer+'.'+bg2.fraction;
         return BigReal(res);
             }
-    else if (bg2.integer="0" && bg2.fraction=="0"){
+    else if (bg2.integer=="0" && bg2.fraction=="0"){
         if (sign=='+')
         res=integer+'.'+fraction;
         else
