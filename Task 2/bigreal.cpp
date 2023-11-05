@@ -333,3 +333,106 @@ ostream &operator<<(ostream &out, const BigReal num)
     out << num.sign << num.integer << '.' << num.fraction;
     return out;
 }
+
+BigReal BigReal::operator -(BigReal bg2){
+    string res="";
+    int cnt=0;
+    if (sign=='-'&&bg2.sign=='-'){
+        cnt=1;
+    }
+    if (fraction.size()>bg2.fraction.size()){
+        bg2.fraction+=string(fraction.size()-bg2.fraction.size(),'0');
+    }
+    else if (fraction.size()<bg2.fraction.size())
+        fraction+=string(bg2.fraction.size()-fraction.size(),'0');
+    if (integer.size()>bg2.integer.size())
+        bg2.integer= string(integer.size()-bg2.integer.size(),'0')+bg2.integer;
+    else if (integer.size()<bg2.integer.size())
+        integer=string(bg2.integer.size()-integer.size(),'0');
+    int max1=0, max2=0;
+    if (integer>bg2.integer)
+    max1=1;
+    else if (integer<bg2.integer)
+        max2=1;
+    else {
+        if (fraction>bg2.fraction)
+            max1=1;
+        else if (fraction<bg2.fraction)
+            max2=1;
+
+    }
+    int borrow=0;
+    string res2="", res1="";
+    if (max1>max2){
+        if (cnt==1){
+            res='-'+res;
+        }
+        for (int i=fraction.size()-1;i>=0;--i){
+            int digit1= fraction[i]-'0';
+            int digit2=bg2.fraction[i]-'0';
+            int diff=digit1-digit2-borrow;
+            if (diff<0) {
+                diff += 10;
+                borrow=1;
+            }
+            else
+                borrow=0;
+            res2+= to_string(diff);
+
+        }
+       for (int i=integer.size()-1;i>=0;--i){
+           int digit1= integer[i]-'0';
+           int digit2=bg2.integer[i]-'0';
+           int diff=digit1-digit2-borrow;
+           if (diff<0) {
+               diff += 10;
+               borrow=1;
+           }
+           else
+               borrow=0;
+           res1+= to_string(diff);
+       }
+    }
+    if (max2>max1){
+        swap(integer,bg2.integer);
+        swap(fraction,bg2.fraction);
+        if (cnt==0){
+            res='-'+res;
+        }
+        for (int i=fraction.size()-1;i>=0;--i){
+            int digit1= fraction[i]-'0';
+            int digit2=bg2.fraction[i]-'0';
+            int diff=digit1-digit2-borrow;
+            if (diff<0) {
+                diff += 10;
+                borrow=1;
+            }
+            else
+                borrow=0;
+            res2+= to_string(diff);
+
+        }
+        for (int i=integer.size()-1;i>=0;--i){
+            int digit1= integer[i]-'0';
+            int digit2=bg2.integer[i]-'0';
+            int diff=digit1-digit2-borrow;
+            if (diff<0) {
+                diff += 10;
+                borrow=1;
+            }
+            else
+                borrow=0;
+            res1+= to_string(diff);
+        }
+    }
+    if (max1==max2){
+        cout<<"Done\n";
+        res="0";
+        return BigReal(res);
+    }
+    reverse(res2.begin(),res2.end());
+    res2='.'+res2;
+    reverse(res1.begin(),res1.end());
+    res+=res1+res2;
+    return BigReal(res);
+}
