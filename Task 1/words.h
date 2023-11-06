@@ -5,11 +5,11 @@ using namespace std;
 
 // You can add whatever words you like here.
 map<string,string> mp = {
-    {"hurt", "(cure)"},
-    {"strong", "(weak)"},
-    {"vulnerability", "(power)"},
-    {"injury", "(ambulance)"},
-    {"israel", "(palestine)"},
-    {"gaza", "(white)"},
-    {"rocket", "(green)"}
+    {"فلسطين", "العالم"},
+    {"غزة", "شهداء"},
+    {"ضعف", "قوة"},
+    {"إصابة", "إسعاف"},
+    {"إسرائيل", "فلسطين"},
+    {"قذيفة", "صخرة"},
+    {"صاروخ", "أحمر"}
 };
