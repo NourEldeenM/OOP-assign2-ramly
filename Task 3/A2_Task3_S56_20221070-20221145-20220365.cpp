@@ -170,19 +170,55 @@ int main()
         // {
 
         // }
-        // else if (instruction.front() == '6')
-        // {
+         else if (instruction.front() == '6')
+         {
+           char For_sum=instruction[1],move1=instruction[2], move2=instruction[3];
+              int moveto1,moveto2,moveto3;
+                if (mp.find(move1) != mp.end())
+                    moveto1 = mp[move1];
+                else
+                    moveto1 = move1 - '0';
 
-        // }
+                if (mp.find(move2) != mp.end())
+                    moveto2 = mp[move2];
+                else
+                    moveto2 = move2 - '0';
+                if (mp.find(For_sum) != mp.end())
+                    moveto3 = mp[For_sum];
+                else
+                    moveto3 = For_sum - '0';
+                double addition= registers[moveto2] + registers[moveto1];
+                registers[moveto3]=addition;
+
+         }
         else if (instruction.front() == 'B')
         {
-            counterJumped = true;
+            char reg=instruction[1];
+            int to_int;
+            if (mp.find(reg)!=mp.end())
+                to_int=mp[reg];
+            else
+                to_int=reg-'0';
+            if (registers[0]==registers[to_int]){
+                counterJumped = true;
+                int Target_add = stoi(instruction.substr(2, 2), nullptr, 16);
+                /*
+                programCounter=Target_add;
+                */
+                // check if the target address is before the current one or not
+                if ((programCounter-Target_add)<0)
+                    programCounter-=programCounter-Target_add;
+                else
+                    programCounter+=abs(programCounter-Target_add);
+
+            }
+
 
         }
-        // else if (instruction.front() == 'C')
-        // {
-
-        // }
+         else if (instruction.front() == 'C')
+         {
+           break;
+         }
         else
         {
             cout << "Invalid instruction at line " << programCounter + 1 << endl;
