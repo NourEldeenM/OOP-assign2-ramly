@@ -7,6 +7,36 @@
 
 using namespace std;
 
+int hexToDecimal(std::string hexNumber) {
+    int decimalNumber = 0;
+    int power = 0;
+
+    // Iterate through each character of the hexadecimal number from right to left
+    for (int i = hexNumber.size()-1; i >= 0; i--) {
+        char c = hexNumber[i];
+        int digit;
+
+        // Convert hexadecimal digit to decimal value
+        if (c >= '0' && c <= '9') {
+            digit = c - '0';
+        } else if (c >= 'A' && c <= 'F') {
+            digit = c - 'A' + 10;
+        } else if (c >= 'a' && c <= 'f') {
+            digit = c - 'a' + 10;
+        } else {
+            // Invalid character, handle error or return an appropriate value
+            return -1;
+        }
+
+        // Add the decimal value of the digit to the final decimal number
+        decimalNumber += digit * pow(16, power);
+        power++;
+    }
+
+    return decimalNumber;
+}
+
+
 vector<string> Memory;
 int programCounter;
 int registers[16] = {0};
@@ -66,8 +96,25 @@ int main()
         // 7. Do the instruction
         if (instruction.front() == '1')
         {
-            cout << 1 << endl;
+           char move2 = instruction[1];
+            int moveTo;
+            if (mp.find(move2) != mp.end()) 
+                moveTo = mp[move2];
+            else
+                moveTo = move2 - '0'; 
+
+            // Converting string to hexnumber
+            int hexNumber = stoi(instruction.substr(2, 2), nullptr, 16); 
+            string s1 = instruction.substr(2, 2);
+            int decimal = hexToDecimal(s1);
+            cout<<"decimal : "<<decimal<<endl;
+           string s2= Memory[decimal];
+
+      int value = hexToDecimal(s2);
+       registers[moveTo] = value;
+
         }
+            
         else if (instruction.front() == '2')
         // 20A3 load A3 in register 0
         {
