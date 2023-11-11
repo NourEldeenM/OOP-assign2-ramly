@@ -131,10 +131,24 @@ int main()
             // Put hexnumber into register of index 0
             registers[moveTo] = hexNumber;
         }
-        // else if (instruction.front() == '3')
-        // {
+         else if (instruction.front() == '3')
+         {
 
-        // }
+             char move2 = instruction[1];
+            int moveTo;
+            if (mp.find(move2) != mp.end()) 
+                moveTo = mp[move2];
+            else
+                moveTo = move2 - '0'; 
+            int hexNumber = stoi(instruction.substr(2, 2), nullptr, 16); 
+
+            string s1 = instruction.substr(2, 2);
+            int decimal = hexToDecimal(s1); 
+           int vofR= registers[moveTo]; 
+           string s2 = to_string(vofR);
+            Memory[decimal]= s2;
+
+         }
         else if (instruction.front() == '4')
         // 40A4 move content in register A to register 4
         {
