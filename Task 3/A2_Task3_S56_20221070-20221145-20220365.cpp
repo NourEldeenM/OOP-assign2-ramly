@@ -193,26 +193,27 @@ int main()
          }
         else if (instruction.front() == 'B')
         {
-            char reg=instruction[1];
+             char reg=instruction[1];
             int to_int;
             if (mp.find(reg)!=mp.end())
                 to_int=mp[reg];
             else
                 to_int=reg-'0';
             if (registers[0]==registers[to_int]){
-                counterJumped = true;
                 int Target_add = stoi(instruction.substr(2, 2), nullptr, 16);
-                /*
-                programCounter=Target_add;
-                */
-                // check if the target address is before the current one or not
-                if ((programCounter-Target_add)<0)
-                    programCounter-=programCounter-Target_add;
-                else
-                    programCounter+=abs(programCounter-Target_add);
+                if (Target_add<Memory.size()) {
+                    counterJumped = true;
+                    /*
+                    programCounter=Target_add;
+                    */
+                    // check if the target address is before the current one or not
+                    if ((programCounter - Target_add) < 0)
+                        programCounter -= programCounter - Target_add;
+                    else
+                        programCounter += abs(programCounter - Target_add);
+                }
 
             }
-
 
         }
          else if (instruction.front() == 'C')
