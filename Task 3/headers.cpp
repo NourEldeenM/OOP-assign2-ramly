@@ -165,11 +165,7 @@ bool Machine::execute()
 
         registers[moveTo] = registers[moveFrom];
     }
-    else if (instruction.front() == '5')
-        {
-
-        }
-        else if (instruction.front() == '6')
+        else if (instruction.front() == '5')
         {
             char For_sum = instruction[1], move1 = instruction[2], move2 = instruction[3];
             int moveto1, moveto2, moveto3;
@@ -186,7 +182,7 @@ bool Machine::execute()
                 moveto3 = mp[For_sum];
             else
                 moveto3 = For_sum - '0';
-            double addition = registers[moveto2] + registers[moveto1];
+            int addition = registers[moveto2] + registers[moveto1];
             registers[moveto3] = addition;
         }
     else if (instruction.front() == 'B')
@@ -206,7 +202,7 @@ bool Machine::execute()
                 /*
                 programCounter=Target_add;
                 */
-                // check if the target address is before the current one or not
+                //Check if the target address is before the current one or not
                 if ((programCounter - Target_add) < 0)
                     programCounter -= programCounter - Target_add;
                 else
