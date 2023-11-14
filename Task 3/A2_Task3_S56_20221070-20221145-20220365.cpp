@@ -27,7 +27,7 @@ int main()
         if (m1.fetch() == true)
             m1.fetch();
         else
-            return false;
+            break;
         
         if (m1.execute() != false)
             m1.execute();

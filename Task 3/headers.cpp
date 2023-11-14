@@ -87,12 +87,16 @@ bool Machine::fetch()
 {
     if (programCounter >= Memory.size())
     {
-        cout << "Failed to Fetch!\n";
+        cout << "Counter reached the end of memory!\n";
         return false;
     }
-    instruction = Memory[programCounter];
-    instruction += Memory[programCounter + 1];
-    programCounter += 2;
+    else
+    {
+        instruction = Memory[programCounter];
+        instruction += Memory[programCounter + 1];
+        programCounter += 2;
+        return true;
+    }
 }
 
 bool Machine::execute()
@@ -128,7 +132,7 @@ bool Machine::execute()
         // Converting string to hexnumber
         int hexNumber = stoi(instruction.substr(2, 2), nullptr, 16);
 
-        // Put hexnumber into register of index 0
+        // Put hexNumber into register of index moveTo
         registers[moveTo] = hexNumber;
     }
     else if (instruction.front() == '3')
@@ -196,17 +200,16 @@ bool Machine::execute()
         if (registers[0] == registers[to_int])
         {
             int Target_add = stoi(instruction.substr(2, 2), nullptr, 16);
-            if (Target_add < Memory.size())
+            if (Target_add <= Memory.size())
             {
-                bool counterJumped = true;
-                /*
-                programCounter=Target_add;
-                */
+                // bool counterJumped = true;
+                programCounter = Target_add;
                 //Check if the target address is before the current one or not
-                if ((programCounter - Target_add) < 0)
-                    programCounter -= programCounter - Target_add;
-                else
-                    programCounter += abs(programCounter - Target_add);
+                // if ((programCounter - Target_add) < 0)
+                // // counter = 2, target_add = 5
+                //     programCounter -= programCounter - Target_add;
+                // else
+                //     programCounter += abs(programCounter - Target_add);
             }
         }
     }
@@ -219,4 +222,5 @@ bool Machine::execute()
         cout << "Invalid instruction at line " << programCounter + 1 << endl;
         return false;
     }
+    return true;
 }
