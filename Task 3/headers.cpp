@@ -79,8 +79,14 @@ void Machine::outputStateMemory()
 
 void Machine::outputStateRegisters()
 {
-    for (int i = 0; i < 16; i++)
-        cout << i << "\t" << registers[i] << endl;
+    for (int i = 0; i < 16; i++){
+
+            stringstream stream;
+    stream << hex << registers[i];
+    string hexString = stream.str();
+
+        cout << i << "\t" << hexString << endl;
+    }
 }
 
 void Machine::displayMenu()
@@ -103,7 +109,7 @@ bool Machine::fetch()
     {
         instruction = Memory[programCounter];
         instruction += Memory[programCounter + 1];
-        programCounter += 2;
+//        programCounter += 2;
         return true;
     }
 }
@@ -124,28 +130,30 @@ bool Machine::execute()
         string s1 = instruction.substr(2, 2);
         int decimal = hexToDecimal(s1);
         string s2 = Memory[decimal];
+        int hexNumber1 = stoi(s2, nullptr, 16);
 
-        int value = hexToDecimal(s2);
-        registers[moveTo] = value;
+        registers[moveTo] = hexNumber1;
+        programCounter+=1;
     }
     else if (instruction.front() == '2')
-    // 20A3 load A3 in register 0
-    {
-        char move2 = instruction[1];
-        int moveTo;
-        if (mp.find(move2) != mp.end())
-            moveTo = mp[move2];
-        else
-            moveTo = move2 - '0';
+// 20A3 load A3 in register 0
+{
+    char move2 = instruction[1];
+    int moveTo;
+    if (mp.find(move2) != mp.end())
+        moveTo = mp[move2];
+    else
+        moveTo = move2 - '0';
 
-        // Converting string to hexnumber
-        int hexNumber = stoi(instruction.substr(2, 2), nullptr, 16);
+    // Converting string to hexnumber
+    int hexNumber = stoi(instruction.substr(2, 2), nullptr, 16);
 
-        // Put hexNumber into register of index moveTo
-        registers[moveTo] = hexNumber;
-    }
+    // Put hexNumber into register of index moveTo
+    registers[moveTo] = hexNumber;
+    programCounter+=1;
+}
     else if (instruction.front() == '3')
-    {
+    {//from register to memory
 
         char move2 = instruction[1];
         int moveTo;
@@ -158,8 +166,13 @@ bool Machine::execute()
         string s1 = instruction.substr(2, 2);
         int decimal = hexToDecimal(s1);
         int vofR = registers[moveTo];
-        string s2 = to_string(vofR);
-        Memory[decimal] = s2;
+
+        stringstream stream;
+    stream << hex << vofR;
+    string hexString = stream.str();
+
+        Memory[decimal] = hexString;
+        programCounter+=1;
     }
     else if (instruction.front() == '4')
     // 40A4 move content in register A to register 4
@@ -177,6 +190,7 @@ bool Machine::execute()
             moveTo = move2 - '0';
 
         registers[moveTo] = registers[moveFrom];
+        programCounter+=1;
     }
         else if (instruction.front() == '5')
         {
@@ -197,6 +211,7 @@ bool Machine::execute()
                 moveto3 = For_sum - '0';
             int addition = registers[moveto2] + registers[moveto1];
             registers[moveto3] = addition;
+            programCounter+=1;
         }
     else if (instruction.front() == 'B')
     {
@@ -221,6 +236,7 @@ bool Machine::execute()
                 //     programCounter += abs(programCounter - Target_add);
             }
         }
+        programCounter+=1;
     }
     else if (instruction.front() == 'C')
     {
