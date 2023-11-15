@@ -93,6 +93,7 @@ void Machine::displayMenu()
 {
     cout << "Registers: \n";
     Machine::outputStateRegisters();
+    cout << "*******************\n";
     cout << "Memory: \n";
     Machine::outputStateMemory();
     cout << "\n";
@@ -109,7 +110,6 @@ bool Machine::fetch()
     {
         instruction = Memory[programCounter];
         instruction += Memory[programCounter + 1];
-//        programCounter += 2;
         return true;
     }
 }
@@ -154,7 +154,6 @@ bool Machine::execute()
 }
     else if (instruction.front() == '3')
     {//from register to memory
-
         char move2 = instruction[1];
         int moveTo;
         if (mp.find(move2) != mp.end())
@@ -168,9 +167,11 @@ bool Machine::execute()
         int vofR = registers[moveTo];
 
         stringstream stream;
-    stream << hex << vofR;
-    string hexString = stream.str();
+        stream << hex << vofR;
+        string hexString = stream.str();
 
+        while (Memory.size() <= decimal)
+            Memory.push_back("00");
         Memory[decimal] = hexString;
         programCounter+=1;
     }
@@ -226,14 +227,7 @@ bool Machine::execute()
             int Target_add = stoi(instruction.substr(2, 2), nullptr, 16);
             if (Target_add <= Memory.size())
             {
-                // bool counterJumped = true;
-                programCounter = Target_add;
-                //Check if the target address is before the current one or not
-                // if ((programCounter - Target_add) < 0)
-                // // counter = 2, target_add = 5
-                //     programCounter -= programCounter - Target_add;
-                // else
-                //     programCounter += abs(programCounter - Target_add);
+                programCounter = Target_add + 1;   
             }
         }
         programCounter+=1;
@@ -244,8 +238,29 @@ bool Machine::execute()
     }
     else
     {
-        cout << "Invalid instruction at line " << programCounter + 1 << endl;
+        cout << "Invalid instruction at line " << programCounter << endl;
         return false;
     }
     return true;
+}
+
+
+void Machine::runProgram() {
+    while (true)
+    {
+        cout << "Display Menu? Y/N: ";
+        char x; cin >> x;
+        if (x == 'Y')
+            this->displayMenu();
+        if (this->fetch() == true)
+            this->fetch();
+        else
+            break;
+        
+        if (this->execute() == true)
+            this->execute();
+        else
+            break;
+    }
+    cout << "Program Done!\n";
 }
