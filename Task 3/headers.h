@@ -13,8 +13,7 @@ map<char, int> mp = {
     {'C', 12},
     {'D', 13},
     {'E', 14},
-    {'F', 15},
-
+    {'F', 15}
 };
 
 class Machine {
@@ -26,6 +25,7 @@ public:
     void loadProgramFile();
     void outputStateMemory();
     void outputStateRegisters();
+    void displayMenu();
     bool fetch();
     bool execute();
 };

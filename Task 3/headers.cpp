@@ -83,6 +83,15 @@ void Machine::outputStateRegisters()
         cout << i << "\t" << registers[i] << endl;
 }
 
+void Machine::displayMenu()
+{
+    cout << "Registers: \n";
+    Machine::outputStateRegisters();
+    cout << "Memory: \n";
+    Machine::outputStateMemory();
+    cout << "\n";
+}
+
 bool Machine::fetch()
 {
     if (programCounter >= Memory.size())
