@@ -13,6 +13,13 @@ You can use this as a test case:
 4 4
 6 1
 4 3
+
+output:
+2 6
+6 1
+1 4
+4 4
+4 3
 */
 #include <bits/stdc++.h>
 
