@@ -15,6 +15,7 @@ int main()
 {
     string input, output = "";
     // Take input
+    cout << "Enter your sentence to correct it: \n";
     getline(cin, input);
     // Pushing first letter to output in Uppercase
     output.push_back(toupper(input[0]));
