@@ -24,8 +24,11 @@ int main()
     // Taking N as input then filling
     // the array from 2 to N.
     int N;
+    cout << "Enter a number: ";
     cin >> N;
     int arr[N - 1];
+
+    // Fill the array starting from 2 to N
     for (int i = 0; i < N - 1; i++)
         arr[i] = i + 2;
 
@@ -47,6 +50,9 @@ int main()
             currentPrime = arr[i];
             primes.push_back(arr[i]);
             st.insert(arr[i]);
+
+            // Put all the numbers that are divisible by currentPrime to not process them in
+            // forward iterations.
             for (int j = i + 1; j < N - 1; j++)
             {
                 if (st.find(arr[j]) == st.end() and arr[j] % currentPrime == 0)
