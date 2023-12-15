@@ -6,6 +6,14 @@
 // TA: Eng. Maya
 // Date: 26 Oct 2023
 
+/*
+You can use this as a test case:
+1 4
+2 6
+4 4
+6 1
+4 3
+*/
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -123,11 +131,10 @@ int main()
                 cout << " - ";
         }
         cout << "\n";
-        cout << 1 << endl;
     }
     else
     {
-        // We can't do
+        // We can't do a sequence
         cout << "We can't form a chain out of this sequence!\n";
     }
 }
